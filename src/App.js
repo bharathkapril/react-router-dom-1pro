@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import User from "./components/User";
+import Home from "./components/Home";
+
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import NavBar from "./components/NavBar";
+
+const URL = "https://jsonplaceholder.typicode.com/users";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get(URL).then((res) => setUsers(res.data));
+  }, []);
+
+  const route = (
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="user" element={<User users={users} />} />
+      </Routes>
+    </Router>
   );
+
+  return <div className="App">{route}</div>;
 }
 
 export default App;
