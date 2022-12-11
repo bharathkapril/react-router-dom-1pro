@@ -7,6 +7,7 @@ import Home from "./components/Home";
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import Emoji from "./components/Emoji";
 
 const URL = "https://jsonplaceholder.typicode.com/users";
 
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="user" element={<User users={users} />} />
+        <Route path="emoji" element={<Emoji />} />
       </Routes>
     </Router>
   );

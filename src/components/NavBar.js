@@ -10,6 +10,9 @@ const NavBar = () => {
       <li>
         <Link to="/user">User</Link>
       </li>
+      <li>
+        <Link to="/emoji">Emoji</Link>
+      </li>
     </ul>
   );
 };
