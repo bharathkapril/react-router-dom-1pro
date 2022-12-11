@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { emoji } from "../emojiDB";
+import "./emoji.css";
 
 // console.log(emoji.map((emo) => emo.emoji));
 
@@ -12,6 +13,7 @@ const Emoji = () => {
         type="text"
         placeholder="search..."
         onChange={(e) => setSearchTerm(e.target.value)}
+        className="inp"
       />
       {emoji
         .filter((val) => {
@@ -23,8 +25,8 @@ const Emoji = () => {
         })
         .map((emo, key) => {
           return (
-            <h3 key={key}>
-              {emo.emoji} -- {emo.description} --{emo.aliases}
+            <h3 key={key} className="data">
+              {key + 1} -- {emo.emoji} -- {emo.description} --{emo.aliases}
               {/* {emo.aliases.map((alias) => (
               <div>{alias}</div>
             ))} */}
