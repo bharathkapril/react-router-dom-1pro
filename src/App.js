@@ -15,7 +15,17 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    axios.get(URL).then((res) => setUsers(res.data));
+    const fetchData = async () => {
+      try {
+        const user = await axios.get(URL);
+        // console.log(user.data);
+        setUsers(user.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchData();
+    // axios.get(URL).then((res) => setUsers(res.data));
   }, []);
 
   const route = (
